@@ -1,0 +1,110 @@
+Write a function that underline all numbers from 1-650 that can be
+misinterpreted for another number within that range when rotated 180 degrees.
+
+=================================================
+1. Clarifying questions / Understand the problem / Clear any ambiguity
+  Get examples
+=================================================
+Do we need to underline if only some digits are misinterpreted? No
+
+How about 313 - E1E? No
+
+16 -> 91
+
+=================================================
+2. Testing (Examples , Happy/Bad Test Cases)
+ To clarify our understanding and pattern-matching
+ avoids making untested/incorrect assumptions
+=================================================
+
+16 -> 91
+
+
+Happy Cases (should be underlined)
+6
+9
+16 -> 91
+19 -> 61
+18 -> 81
+66 -> 99
+
+
+Bad Cases (should not be underline)
+1 -> 1
+3
+4
+5 -> S
+7
+8
+26 -> 9Z
+60 - 09 (we don't print leading zeros 009)
+96 -> 96
+116 -> 911 (out of range 1-650)
+313 - E1E
+
+Edge Cases
+60 -> 09 (we don't print leading zeros 009)
+96 -> 96
+1 -> 1
+116 -> 911 (out of range 1-650)
+
+
+
+
+=================================================
+3. Algorithm(s)
+Separate coming up with the algorithm from writing the code
+It's a "code recipe"
+List out steps to avoid gaps
+Usually - in plain english / procedural steps 1,2,3a.,3b., 4
+=================================================
+
+input: upperbound (650)
+output: print the numbers that need to be underlined
+
+1. We have to build a map with all of our values that can be misinterpreted.
+  [0 -> 0]
+  [1 -> 1]
+  [6 -> 9]
+  [8 -> 8]
+  [9 -> 6]
+2. Iterate through each value (1-650) called N.
+3. Convert the number to a string  16 -> "16"
+
+3. Loop through the chars (C) in the stringNumber and see if it exists in the map.
+  3b. Skip number N if a digit D is not in the map (gets rid of any numbers containing 2 3 4 5 7)
+
+4. Loop through the chars (C) in the stringNumber ("16") -> 91 (left right) -> (right left)
+  4b. make a new string, variable called flippedNumber
+  4c. prepend each char *by looking through the map* to the new string ( string = C + string instead of string = string + C)
+
+N = 16
+flippedNumber = 91
+
+5. If any of these conditions are met, then don't print
+  5a. N == flippedNumber (96 == 96)
+  5b. flippedNumber > upperBound (911 > 650)
+  5c. first character of flippedNumber is 0 (09 has a leading 0)
+
+6. Otherwise, print N
+
+
+
+=================================================
+4. Implement it in code
+Translate the algo into code (hopefully 1:1)
+=================================================
+
+
+650 should print 20 results.
+
+
+=================================================
+5. Validation/Debug
+Make sure it works, if it doesn't figure out why.
+=================================================
+
+
+
+
+
