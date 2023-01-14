@@ -1,7 +1,9 @@
 let array = ['oliver', 'pixel', 'pinky', 'pixel'];
 
 function solution(arr) {
-	let map = {};
+	let map = {
+		key: [],
+	};
 	let winner = '';
 	let count = 0;
 	for (let i = 0; i < arr.length; i++) {
