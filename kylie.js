@@ -40,7 +40,6 @@ function solution(array) {
 			result *= obj.percentage;
 		}
 	}
-	console.log(map);
 	return result;
 }
 
